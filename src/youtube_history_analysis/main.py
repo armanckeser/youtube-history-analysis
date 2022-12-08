@@ -119,7 +119,7 @@ def main(
         loc="upper left",
         bbox_to_anchor=(1.0, 1.0),
     )
-    ax.get_figure().savefig("/outputs/percentages_per_month.png")
+    ax.get_figure().savefig(os.path.join("outputs", "percentages_per_month.png"))
 
     ax = df_pivotted_by_month.plot.area(fontsize=13, figsize=(20, 10))
     ax.set_xlabel("Date")
@@ -127,7 +127,7 @@ def main(
     ax.set_title("My YouTube Interest by Month")
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles[::-1], labels[::-1], fontsize=11, loc="upper left")
-    ax.get_figure().savefig("interest_per_month.png")
+    ax.get_figure().savefig(os.path.join("outputs", "numbers_per_month.png"))
     service.close()
 
 

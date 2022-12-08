@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "youtube-history-analysis"
-version = "0.0.1"
+version = "1.0.0"
 description = "See how your YouTube interests evolved over time"
 authors = [
     "Armanc Keser <armanckeser@hotmail.com>",

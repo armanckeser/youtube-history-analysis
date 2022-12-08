@@ -78,3 +78,8 @@ venv.bak/
 # IDEs
 .idea/
 src/youtube_history_analysis/watch-history.json
+src/youtube_history_analysis/outputs/full_history.csv
+src/youtube_history_analysis/outputs/numbers_per_month.png
+src/youtube_history_analysis/outputs/percentages_per_month.png
+src/youtube_history_analysis/outputs/snippets.csv
+src/youtube_history_analysis/outputs/watch_history.csv
