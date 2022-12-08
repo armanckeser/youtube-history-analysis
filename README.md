@@ -21,13 +21,36 @@ See how your YouTube interests evolved over time
 ## Installation
 
 ```sh
+python -m venv yt-history-venv
+./yt-history-venv/Scripts/activate
 pip install youtube-history-analysis
 ```
 
 ## Usage
+### Get a YouTube API Key
+
+1. Visit the [Google Cloud Console](https://console.cloud.google.com/).
+2. Click the project drop-down and select or create the project for which you want to add an API key.
+3. Click the hamburger menu and select APIs & Services > Credentials.
+4. On the Credentials page, click Create credentials > API key.
+5. The API key created dialog displays your newly created API key.
+
+Remember to restrict the API key so that it can only be used with certain websites or IP addresses by clicking the Edit button for the API key and then setting the restrictions in the Key restriction section.
+### Get your YouTube History as JSON
+1. Visit [Google Takeout](https://takeout.google.com/) and sign in to your Google account.
+2. Scroll down to the "YouTube" section and click All data included.
+3. Click the Deselect All button and then select the checkbox next to Watch history.
+4. Click the Next button at the bottom of the page.
+5. On the next page, you can select the file type and delivery method for your takeout. Make sure to select JSON as the file type.
+6. Click the Create export button to start the export process.
+
+Once the export is complete, you will receive an email with a link to download your takeout. The downloaded file will be a zip archive containing your YouTube watch history in JSON format.
+
 ```sh
-python -m youtube_history_analysis $API_KEY $WATCH_HISTORY_JSON_PATH
+python -m youtube_history_analysis $API_KEY --watch-history-file-path $WATCH_HISTORY_JSON_PATH
 ```
+
+This will create an `outputs` folder with a bunch of `.csv` files and a few `.png` files. Feel free to use the `.csv` file to do your own analysis.
 
 ## Development
 
