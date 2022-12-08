@@ -1,0 +1,18 @@
+{
+  "template": "https://github.com/woltapp/wolt-python-package-cookiecutter",
+  "commit": "d7244522b73693523a377d8afcc272cb2753cb1e",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "author_name": "Armanc Keser",
+      "author_email": "armanckeser@hotmail.com",
+      "github_username": "armanckeser",
+      "project_name": "youtube-history-analysis",
+      "project_slug": "youtube-history-analysis",
+      "package_name": "youtube_history_analysis",
+      "project_short_description": "See how your YouTube interests evolved over time",
+      "_template": "https://github.com/woltapp/wolt-python-package-cookiecutter"
+    }
+  },
+  "directory": null
+}
