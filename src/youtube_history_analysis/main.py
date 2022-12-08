@@ -1,4 +1,5 @@
 import json
+import os
 from typing import TYPE_CHECKING
 
 import matplotlib.pyplot as plt
@@ -27,6 +28,9 @@ def main(
     service: YouTubeResource = build("youtube", "v3", developerKey=youtube_api_key)
     videos_collection = service.videos()
     video_categories_collection = service.videoCategories()
+
+    if not os.path.exists("./outputs"):
+        os.mkdir("./outputs")
 
     with open(WATCH_HISTORY_FILE_PATH, encoding="utf-8") as watch_history_file:
         watch_history = json.load(watch_history_file)
