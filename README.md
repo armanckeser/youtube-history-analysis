@@ -24,6 +24,11 @@ See how your YouTube interests evolved over time
 pip install youtube-history-analysis
 ```
 
+## Usage
+```sh
+python -m youtube_history_analysis $API_KEY $WATCH_HISTORY_JSON_PATH
+```
+
 ## Development
 
 * Clone this repository

@@ -7,4 +7,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - Added main function that creates a few analysis files
-- Use `poetry run python main.py $API_KEY $WATCH_HISTORY_FILE_PATH` to create a percentage analysis
+- Use `poetry run python -m youtube_history_analysis  $API_KEY $WATCH_HISTORY_FILE_PATH` to create analysis
