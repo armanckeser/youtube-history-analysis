@@ -25,6 +25,8 @@ def main(
         youtube_api_key (str): YouTube api key from https://console.cloud.google.com/apis/dashboard
         watch_history_file_path (str, optional): Path to watch history downloaded from Google Takeout as JSON. Defaults to ./watch-history.json.
     """
+    print("Analysis Started!")
+    print("Connecting to YouTube.")
     service: YouTubeResource = build("youtube", "v3", developerKey=youtube_api_key)
     videos_collection = service.videos()
     video_categories_collection = service.videoCategories()
@@ -32,6 +34,7 @@ def main(
     if not os.path.exists("./outputs"):
         os.mkdir("./outputs")
 
+    print("Loading watch history.")
     with open(WATCH_HISTORY_FILE_PATH, encoding="utf-8") as watch_history_file:
         watch_history = json.load(watch_history_file)
 
@@ -45,6 +48,7 @@ def main(
     unique_watched_urls = list(set(watched_urls.values()))
     unique_watched_ids = [url[32:] for url in unique_watched_urls]
 
+    print("Getting video information from YouTube.")
     watched_video_snippets = []
     for i in range(0, len(unique_watched_ids), 50):
         video_collection_request = videos_collection.list(
@@ -65,6 +69,7 @@ def main(
     for item in video_categories_response["items"]:
         video_category_id_to_title[item["id"]] = item["snippet"]["title"]
 
+    print("Saving video snippets and watch history information to outputs folder.")
     df_snippets = pd.DataFrame(watched_video_snippets)
     df_watch_history = pd.DataFrame(watch_history)
     df_watch_history.to_csv("outputs/watch_history.csv")
@@ -103,6 +108,7 @@ def main(
     df_pivotted_by_month = pivotted.resample("M").sum()
     percentages = df_pivotted_by_month.div(df_pivotted_by_month.sum(axis=1), axis=0)
 
+    print("Drawing a few example graphs to output folder.")
     plt.style.use("dark_background")  # type: ignore
     vals = np.linspace(0, 1, 22)
     np.random.shuffle(vals)
@@ -129,6 +135,12 @@ def main(
     ax.legend(handles[::-1], labels[::-1], fontsize=11, loc="upper left")
     ax.get_figure().savefig(os.path.join("outputs", "numbers_per_month.png"))
     service.close()
+
+    print(
+        "Done! Go check out your analysis in the outputs folder!"
+        "You can also run some on your own using the csv files."
+        "Thanks for using youtube-history-analysis"
+    )
 
 
 if __name__ == "__main__":

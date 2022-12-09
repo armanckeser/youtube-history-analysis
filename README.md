@@ -17,12 +17,14 @@
 ---
 
 See how your YouTube interests evolved over time
+![Example](/docs/percentage_per_month_dark.png)
 
 ## Installation
 
 ```sh
 python -m venv yt-history-venv
-./yt-history-venv/Scripts/activate
+# On Windows ./yt-history-venv/Scripts/activate.bat
+# On MAC source ./yt-history-venv/bin/activate
 pip install youtube-history-analysis
 ```
 
