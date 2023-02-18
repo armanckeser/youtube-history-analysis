@@ -65,10 +65,10 @@ def main(
         part="snippet", id=unique_category_ids
     )
     video_categories_response = video_categories_request.execute()
-    video_category_id_to_title = {}
-    for item in video_categories_response["items"]:
-        video_category_id_to_title[item["id"]] = item["snippet"]["title"]
-
+    video_category_id_to_title = {
+        item["id"]: item["snippet"]["title"]
+        for item in video_categories_response["items"]
+    }
     print("Saving video snippets and watch history information to outputs folder.")
     df_snippets = pd.DataFrame(watched_video_snippets)
     df_watch_history = pd.DataFrame(watch_history)
